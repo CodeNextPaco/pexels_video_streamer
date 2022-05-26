@@ -13,6 +13,8 @@
 		840BBA48283F4C40005F885A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840BBA46283F4C40005F885A /* Main.storyboard */; };
 		840BBA4A283F4C46005F885A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840BBA49283F4C46005F885A /* Assets.xcassets */; };
 		840BBA4D283F4C46005F885A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840BBA4B283F4C46005F885A /* LaunchScreen.storyboard */; };
+		840BBA58283F53E5005F885A /* video_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 840BBA57283F53E5005F885A /* video_1.mp4 */; };
+		840BBA5A283F53F9005F885A /* video_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 840BBA59283F53F9005F885A /* video_2.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,9 @@
 		840BBA49283F4C46005F885A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		840BBA4C283F4C46005F885A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		840BBA4E283F4C46005F885A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		840BBA57283F53E5005F885A /* video_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = video_1.mp4; path = Assets.xcassets/video_1.dataset/video_1.mp4; sourceTree = "<group>"; };
+		840BBA59283F53F9005F885A /* video_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = video_2.mp4; path = Assets.xcassets/video_2.dataset/video_2.mp4; sourceTree = "<group>"; };
+		840BBA5B283F5405005F885A /* video_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = video_3.mp4; path = Assets.xcassets/video_3.dataset/video_3.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +61,9 @@
 		840BBA3F283F4C40005F885A /* videoTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				840BBA57283F53E5005F885A /* video_1.mp4 */,
+				840BBA59283F53F9005F885A /* video_2.mp4 */,
+				840BBA5B283F5405005F885A /* video_3.mp4 */,
 				840BBA40283F4C40005F885A /* AppDelegate.swift */,
 				840BBA42283F4C40005F885A /* SceneDelegate.swift */,
 				840BBA44283F4C40005F885A /* ViewController.swift */,
@@ -126,7 +134,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				840BBA4D283F4C46005F885A /* LaunchScreen.storyboard in Resources */,
+				840BBA58283F53E5005F885A /* video_1.mp4 in Resources */,
 				840BBA4A283F4C46005F885A /* Assets.xcassets in Resources */,
+				840BBA5A283F53F9005F885A /* video_2.mp4 in Resources */,
 				840BBA48283F4C40005F885A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
