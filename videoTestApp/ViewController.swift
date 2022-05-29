@@ -28,9 +28,13 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
        
         
-        let videoURL: NSURL = Bundle.main.url(forResource: "video_2", withExtension: "mp4")! as NSURL
+        //sample URL from Pexler API call
         
-        let asset: AVAsset = AVAsset.init(url: videoURL as URL)
+        let urlString = String("https://player.vimeo.com/external/342571552.sd.mp4?s=e0df43853c25598dfd0ec4d3f413bce1e002deef&profile_id=165&oauth2_token_id=57447761")
+        
+        let videoURL: NSURL =  NSURL.init(string: urlString)!
+        
+       let asset: AVAsset = AVAsset.init(url: videoURL as URL)
         
         let playerItem = AVPlayerItem(asset: asset)
         
