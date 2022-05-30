@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PlayerViewController.swift
 //  videoTestApp
 //
 //
@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class PlayerViewController: UIViewController {
     
     //AVPlayerLooper is used instead of AVPlayer
     var playerLooper: AVPlayerLooper!
