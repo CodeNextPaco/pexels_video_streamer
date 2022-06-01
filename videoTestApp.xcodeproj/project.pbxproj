@@ -17,6 +17,7 @@
 		846BB90E284409EF00541516 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BB90D284409EF00541516 /* PlayerViewController.swift */; };
 		846BB91028440AAC00541516 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BB90F28440AAC00541516 /* SearchViewController.swift */; };
 		846BB91328440BDF00541516 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BB91228440BDF00541516 /* APIManager.swift */; };
+		846BB917284583DE00541516 /* VideoSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BB916284583DE00541516 /* VideoSearchCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		846BB90D284409EF00541516 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		846BB90F28440AAC00541516 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		846BB91228440BDF00541516 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		846BB916284583DE00541516 /* VideoSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSearchCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				840BBA5B283F5405005F885A /* video_3.mp4 */,
 				840BBA40283F4C40005F885A /* AppDelegate.swift */,
 				840BBA42283F4C40005F885A /* SceneDelegate.swift */,
+				846BB915284583A800541516 /* Views */,
 				846BB91128440BAF00541516 /* API */,
 				846BB90C284409BA00541516 /* Controllers */,
 				846BB9142845731800541516 /* Models */,
@@ -103,6 +106,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		846BB915284583A800541516 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				846BB916284583DE00541516 /* VideoSearchCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				846BB91028440AAC00541516 /* SearchViewController.swift in Sources */,
+				846BB917284583DE00541516 /* VideoSearchCell.swift in Sources */,
 				846BB90E284409EF00541516 /* PlayerViewController.swift in Sources */,
 				846BB91328440BDF00541516 /* APIManager.swift in Sources */,
 				840BBA41283F4C40005F885A /* AppDelegate.swift in Sources */,

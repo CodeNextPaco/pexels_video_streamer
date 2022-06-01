@@ -12,6 +12,7 @@ import AVFoundation
 
 class PlayerViewController: UIViewController {
     
+   public var urlString = String()
     //AVPlayerLooper is used instead of AVPlayer
     var playerLooper: AVPlayerLooper!
     var queuePlayer: AVQueuePlayer!
@@ -30,11 +31,12 @@ class PlayerViewController: UIViewController {
         
         //sample URL from Pexler API call
         
-        let urlString = String("https://player.vimeo.com/external/342571552.sd.mp4?s=e0df43853c25598dfd0ec4d3f413bce1e002deef&profile_id=165&oauth2_token_id=57447761")
+        //let urlString = String("https://player.vimeo.com/external/342571552.sd.mp4?s=e0df43853c25598dfd0ec4d3f413bce1e002deef&profile_id=165&oauth2_token_id=57447761")
         
-        let videoURL: NSURL =  NSURL.init(string: urlString)!
+        let videoURL: NSURL =  NSURL.init(string: self.urlString)!
         
-       let asset: AVAsset = AVAsset.init(url: videoURL as URL)
+        
+        let asset: AVAsset = AVAsset.init(url: videoURL as URL)
         
         let playerItem = AVPlayerItem(asset: asset)
         
