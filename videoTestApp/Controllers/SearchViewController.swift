@@ -25,7 +25,7 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
    
         Task{
             
-            self.videosArray = await self.manager.searchPexelVidsByTerm(term: "Desert")
+            self.videosArray = await self.manager.searchPexelVidsByTerm(term: "Clouds")
             print(videosArray[0].videoFiles[1].link)
             tableView.reloadData()
             
@@ -62,13 +62,6 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         return videosArray.count
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//        let defaultHeight = CGFloat(68.0)
-//
-//        return defaultHeight
-//
-//    }
 
     
     // MARK: - Navigation
@@ -77,7 +70,7 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        
+        print("Prepare for Segue")
         let cell = sender as! UITableViewCell
         if let indexPath = tableView.indexPath(for: cell){
             

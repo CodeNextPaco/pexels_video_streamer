@@ -43,6 +43,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="videoImage" destination="g7l-Fz-4jV" id="ulv-DZ-5G7"/>
+                                            <segue destination="qtp-L3-IH4" kind="show" id="gRG-9J-XKg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -54,7 +55,6 @@
                     <navigationItem key="navigationItem" id="xRr-bi-05g"/>
                     <connections>
                         <outlet property="tableView" destination="UmD-2h-ILC" id="5Ih-uo-a5F"/>
-                        <segue destination="qtp-L3-IH4" kind="show" identifier="PlayerVC" id="I3G-hZ-sGb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
