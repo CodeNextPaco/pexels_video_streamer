@@ -29,7 +29,9 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
             print(videosArray[0].videoFiles[1].link)
             tableView.reloadData()
             
-            tableView.rowHeight = 350
+            //tableView.rowHeight = 350
+            tableView.rowHeight = tableView.bounds.height
+            
            //
            // performSegue(withIdentifier: "PlayerVC", sender: nil)
         }

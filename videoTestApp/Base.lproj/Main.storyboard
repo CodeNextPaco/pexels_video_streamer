@@ -16,29 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UmD-2h-ILC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UmD-2h-ILC">
                                 <rect key="frame" x="0.0" y="79" width="414" height="817"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VideoSearchCell" rowHeight="340" id="4Do-t3-bbS" customClass="VideoSearchCell" customModule="videoTestApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="340"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VideoSearchCell" rowHeight="767" id="4Do-t3-bbS" customClass="VideoSearchCell" customModule="videoTestApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="767"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Do-t3-bbS" id="whG-1C-iqK">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="767"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g7l-Fz-4jV">
-                                                    <rect key="frame" x="36" y="20" width="300" height="300"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g7l-Fz-4jV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="434" height="786"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="300" id="8BF-kc-Bds"/>
-                                                        <constraint firstAttribute="width" constant="300" id="THA-rR-NVi"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="8BF-kc-Bds"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="414" id="THA-rR-NVi"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="g7l-Fz-4jV" firstAttribute="leading" secondItem="whG-1C-iqK" secondAttribute="leadingMargin" constant="16" id="IZL-nX-Xh0"/>
-                                                <constraint firstItem="g7l-Fz-4jV" firstAttribute="centerY" secondItem="whG-1C-iqK" secondAttribute="centerY" id="bfJ-uE-v8v"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="g7l-Fz-4jV" secondAttribute="bottom" constant="-30" id="GYb-dN-O9M"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="g7l-Fz-4jV" secondAttribute="trailing" constant="-40" id="HSw-mh-9Vi"/>
+                                                <constraint firstItem="g7l-Fz-4jV" firstAttribute="leading" secondItem="whG-1C-iqK" secondAttribute="leadingMargin" constant="-20" id="IZL-nX-Xh0"/>
+                                                <constraint firstItem="g7l-Fz-4jV" firstAttribute="top" secondItem="whG-1C-iqK" secondAttribute="topMargin" constant="-11" id="Jiv-nB-cbq"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="g7l-Fz-4jV" secondAttribute="trailing" constant="-40" id="PjJ-BF-bi1"/>
+                                                <constraint firstItem="g7l-Fz-4jV" firstAttribute="centerY" secondItem="whG-1C-iqK" secondAttribute="centerY" constant="9.5" id="bfJ-uE-v8v"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -51,6 +54,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UmD-2h-ILC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-9" id="9yT-pf-OLv"/>
+                            <constraint firstItem="UmD-2h-ILC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TMP-hh-bwZ"/>
+                            <constraint firstItem="UmD-2h-ILC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZU0-zX-eHP"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="UmD-2h-ILC" secondAttribute="bottom" constant="-34" id="wnf-L7-Q0N"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xRr-bi-05g"/>
                     <connections>
