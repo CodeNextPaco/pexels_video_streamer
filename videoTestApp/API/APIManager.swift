@@ -54,13 +54,10 @@ class APIManager: ObservableObject{
             let decoderData = try decoder.decode(ResponseBody.self, from: data)
             
             print("Response data ------>")
-             
-            
-            
+
             self.videos = [] //empty it first, in case user has done another search
             self.videos = decoderData.videos
-            
-            
+
             
         } catch {
             

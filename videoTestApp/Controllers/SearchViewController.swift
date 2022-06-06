@@ -15,6 +15,7 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
     
     let manager = APIManager()
     var videosArray = APIManager().videos
+    var searchTerm = String()
 
     override func viewDidLoad()  {
         super.viewDidLoad()
@@ -22,10 +23,11 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         tableView.dataSource = self
         //tableView.delegate = self
         tableView.rowHeight = 550
+        self.searchTerm = "Cars"
    
         Task{
             
-            self.videosArray = await self.manager.searchPexelVidsByTerm(term: "Clouds")
+            self.videosArray = await self.manager.searchPexelVidsByTerm(term: self.searchTerm)
             print(videosArray[0].videoFiles[1].link)
             tableView.reloadData()
             
@@ -42,6 +44,7 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          
+    
         let cell = tableView.dequeueReusableCell(withIdentifier: "VideoSearchCell",
                                                  for: indexPath) as! VideoSearchCell
         
@@ -55,6 +58,7 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         
         cell.videoImage.loadurl(url: url)
          
+         
         
         return cell
     }
@@ -64,6 +68,7 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         return videosArray.count
     }
     
+ 
 
     
     // MARK: - Navigation
@@ -73,23 +78,20 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         print("Prepare for Segue")
-        let cell = sender as! UITableViewCell
+        let cell = sender as! VideoSearchCell
         if let indexPath = tableView.indexPath(for: cell){
             
             let videoPlayerVC = segue.destination as! PlayerViewController
             
             videoPlayerVC.urlString = videosArray[indexPath.row].videoFiles[1].link
+            videoPlayerVC.videoUser = videosArray[indexPath.row].user.name
+            videoPlayerVC.videoCategory = self.searchTerm
+            videoPlayerVC.videoDuration = videosArray[indexPath.row].duration
+            videoPlayerVC.backgroundImage = cell.videoImage
+            
             
         }
-        
-//        if (segue.identifier == "PlayerVC") {
-//               // pass data to next view
-//            if let playervc = segue.destination as? PlayerViewController {
-//
-//                playervc.urlString = videosArray[0].videoFiles[1].link
-//            }
-//
-//        }
+ 
     
     }
 
