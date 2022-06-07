@@ -7,16 +7,20 @@
 
 import UIKit
 import AVKit
+import Parse
 
 class LoginViewController: UIViewController {
 
     var playerLooper: AVPlayerLooper!
     var queuePlayer: AVQueuePlayer!
     
-    var avPlayer: AVPlayer!
+ 
     var avPlayerLayer: AVPlayerLayer!
     var paused: Bool = false
     
+    
+    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +39,51 @@ class LoginViewController: UIViewController {
         view.layer.insertSublayer(avPlayerLayer, at: 0)
         self.queuePlayer.play()
          
-         
-
-//        avPlayer = AVPlayer(url: videoUrl!)
-//        avPlayerLayer = AVPlayerLayer(player: avPlayer)
-//        avPlayerLayer.videoGravity = .resizeAspectFill
-//        avPlayer.volume = 0
-//        avPlayer.actionAtItemEnd = .none
-//
-//        avPlayerLayer.frame = view.layer.bounds
-//        view.backgroundColor = .clear
-//        view.layer.insertSublayer(avPlayerLayer, at: 0)
-//        avPlayer.play()
     }
     
-
+    @IBAction func onSignUp(_ sender: Any) {
+        
+        let user = PFUser()
+        user.username = userTextField.text
+        user.password = passwordTextField.text
+        
+        user.signUpInBackground {
+            (succeeded: Bool, error: Error?) -> Void in
+            if let error = error {
+              let errorString = error.localizedDescription
+              
+               print(errorString)
+                
+            } else {
+              // Hooray! Let them use the app now.
+                
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            }
+          }
+        
+    }
+    
+    @IBAction func onLogIn(_ sender: Any) {
+        
+        let username = userTextField.text!
+        let password = passwordTextField.text!
+        
+        PFUser.logInWithUsername(inBackground: username, password: password){
+            
+            (user: PFUser?, error: Error?) -> Void in
+             if user != nil {
+               // Do stuff after successful login.
+                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                 
+             } else {
+               // The login failed. Check error to see why.
+                 
+                 print("Error loging in: \(String(describing: error?.localizedDescription))")
+             }
+        }
+        
+        
+    }
     /*
     // MARK: - Navigation
 
