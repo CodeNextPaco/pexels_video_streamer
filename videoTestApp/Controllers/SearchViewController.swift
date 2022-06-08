@@ -11,6 +11,7 @@ import UIKit
  
 class SearchViewController: UIViewController , UITableViewDataSource, UITableViewDelegate  {
     
+    @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
     let manager = APIManager()
@@ -23,22 +24,25 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         tableView.dataSource = self
         //tableView.delegate = self
         tableView.rowHeight = 550
-        self.searchTerm = "Cars"
+        self.searchTerm = "Goats"
+        tableView.rowHeight = tableView.bounds.height
    
+        self.fetchData()
+
+        // Do any additional setup after loading the view.
+    }
+    
+    
+    func fetchData(){
+        
         Task{
             
             self.videosArray = await self.manager.searchPexelVidsByTerm(term: self.searchTerm)
-            print(videosArray[0].videoFiles[1].link)
             tableView.reloadData()
             
-            //tableView.rowHeight = 350
-            tableView.rowHeight = tableView.bounds.height
-            
-           //
-           // performSegue(withIdentifier: "PlayerVC", sender: nil)
+            print(videosArray)
+ 
         }
-
-        // Do any additional setup after loading the view.
     }
     
     
@@ -51,8 +55,6 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         //let video = self.videosArray[indexPath.row]
         
         let videoURLString = videosArray[indexPath.row].image
-        
-        print("Video URL String --> \(videoURLString)")
         
         guard let url = URL(string: videoURLString) else { return cell }
         
@@ -68,12 +70,22 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         return videosArray.count
     }
     
- 
-
     
-    // MARK: - Navigation
+    @IBAction func searchForVideos(_ sender: Any) {
+   
+        
+        if self.searchField.text != ""{
+            
+            self.searchTerm = self.searchField.text!
+            
+            self.fetchData()
+        }
+        
+        
+        
+     }
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -88,6 +100,9 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
             videoPlayerVC.videoCategory = self.searchTerm
             videoPlayerVC.videoDuration = videosArray[indexPath.row].duration
             videoPlayerVC.backgroundImage = cell.videoImage
+            videoPlayerVC.videoID = videosArray[indexPath.row].id
+            
+            self.hidesBottomBarWhenPushed = true
             
             
         }
