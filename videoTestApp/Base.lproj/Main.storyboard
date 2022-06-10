@@ -158,11 +158,15 @@
                                             <constraint firstAttribute="height" constant="40" id="Tb7-GZ-mjt"/>
                                             <constraint firstAttribute="width" constant="40" id="exJ-mw-Jze"/>
                                         </constraints>
+                                        <color key="tintColor" systemColor="systemYellowColor"/>
                                         <size key="titleShadowOffset" width="1" height="1"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <backgroundConfiguration key="background" image="paperplane.circle" catalog="system"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="shareVideo:" destination="qtp-L3-IH4" eventType="touchUpInside" id="dHc-G0-ll1"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAy-XP-Jcj">
                                         <rect key="frame" x="0.0" y="180" width="40" height="40"/>
@@ -426,7 +430,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="daK-pH-dtA">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="ezE-lE-IvI" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" modalPresentationStyle="fullScreen" id="ezE-lE-IvI" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Mk-z2-QZi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -23,7 +23,8 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var playPauseBtn: UIButton!
     
     
-    let LEFT_OFFSET = 20;
+    //let LEFT_OFFSET = 20;
+    var commentViewOriginY: CGFloat = 0.0;
     
     
     //AVPlayerLooper is used instead of AVPlayer
@@ -43,6 +44,7 @@ class PlayerViewController: UIViewController {
     var videoCategory = String()
     var videoID = Int()
     public var urlString = String()
+    var videoComments = [String]()
     
     //for scrollview
     @IBOutlet weak var commentsLabel: UILabel!
@@ -112,6 +114,13 @@ class PlayerViewController: UIViewController {
         
         
         self.queuePlayer.play()
+        
+        //adding the notification observer to move the commentField up when keyboard present
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
             
               
     }
@@ -119,6 +128,10 @@ class PlayerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
        
   
+       print("Enter Comment View Origin Y : \(self.enterCommentView.frame.origin.y)")
+        
+        self.commentViewOriginY = self.enterCommentView.frame.origin.y
+        
     }
     
 //    func setupScrollView(){
@@ -156,6 +169,23 @@ class PlayerViewController: UIViewController {
 //
 //    }
     
+    
+    @IBAction func shareVideo(_ sender: Any) {
+        
+        let itemToShare = [self.urlString]
+        
+        let activityViewController = UIActivityViewController(activityItems: itemToShare, applicationActivities: nil)
+               activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+
+               // exclude some activity types from the list (optional)
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop ]
+
+               // present the view controller
+               self.present(activityViewController, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func playPauseVideo(_ sender: Any) {
    
         if self.isPlaying{
@@ -177,6 +207,25 @@ class PlayerViewController: UIViewController {
         print("Save Button")
        //            let favoriteVideo = PFObject(className:"favorite_video")
        //            favoriteVideo["favorite_video_url"] = self.urlString
+        
+        let likedVideo = PFObject(className: "LikedVideos")
+        
+        likedVideo["user"] = PFUser.current()!
+        likedVideo["liked_video_url"] = self.urlString
+        likedVideo["category"] = self.videoCategory
+        likedVideo["videoID"] = self.videoID
+        
+        likedVideo.saveInBackground { (succeeded, error)  in
+                       if (succeeded) {
+                           print("Saved successfully")
+                          // self.vid.isUserInteractionEnabled = false
+                       } else {
+                           // There was a problem, check error.description
+                           print("Error: \(error?.localizedDescription)" )
+       
+                       }
+                   }
+        
     }
     
     @IBAction func showEnterCommentView(_ sender: Any) {
@@ -198,37 +247,40 @@ class PlayerViewController: UIViewController {
             
         }
     
-    
-    
     }
-    
     
     @IBAction func postComment(_ sender: Any) {
         
-        
         let newComment = self.commentField.text
-        
-        print("Post Comment: \(newComment)")
-        
+
         self.self.commentsLabel.text = self.commentsLabel.text! + "\n"+newComment!
         
         self.commentField.text = ""
-         
         
+        let videoComment = PFObject(className: "Comments")
+        
+        videoComment["user"] = PFUser.current()!
+        videoComment["comment"] = self.videoComments
+        videoComment["videoId"] = self.videoID
+        
+        videoComment.saveInBackground { (succeeded, error)  in
+                       if (succeeded) {
+                           print("Saved successfully")
+                          // self.vid.isUserInteractionEnabled = false
+                       } else {
+                           // There was a problem, check error.description
+                           print("Error: \(String(describing: error?.localizedDescription))" )
+       
+                       }
+                   }
     }
-    
-    
     
     func addDataLabels(){
 
-        
         self.userLabel.text = self.videoUser
-
         self.durationLabel.text =  String(videoDuration) + " sec"
-    
         self.categoryLabel.text = "#" + self.videoCategory
     
-
     }
     
 //    func addSaveAndShareBtns(){
@@ -303,20 +355,40 @@ class PlayerViewController: UIViewController {
 //
 //    }
     
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+            
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+           // if keyboard size is not available for some reason, dont do anything
+           return
+        }
+
+      // move the root view up by the distance of keyboard height
+        
+     
+        self.enterCommentView.frame.origin.y = self.enterCommentView.frame.origin.y - keyboardSize.height
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+      // move back the root view origin to zero
+      self.enterCommentView.frame.origin.y = self.commentViewOriginY
+    }
+    
+
 }
 
-extension UILabel {
-    func makeLabel() {
-        //configure appearance of labels here
-        self.textAlignment = .left
-        self.font = UIFont(name: "AvenirNextRegular", size:20.0)
-        self.font = .systemFont(ofSize: 20)
-        self.adjustsFontSizeToFitWidth = true
-        self.textColor = UIColor(red: 1.0, green: 1.00, blue: 1.00, alpha: 0.90)
-        self.layer.shadowOffset = CGSize(width: 2, height: 2)
-        self.layer.shadowOpacity = 0.8
-        self.layer.shadowRadius = 2.4
-        self.layer.shadowColor = CGColor.init(srgbRed: 10, green: 10, blue: 10, alpha: 0.6)
-        
-    }
-}
+//extension UILabel {
+//    func makeLabel() {
+//        //configure appearance of labels here
+//        self.textAlignment = .left
+//        self.font = UIFont(name: "AvenirNextRegular", size:20.0)
+//        self.font = .systemFont(ofSize: 20)
+//        self.adjustsFontSizeToFitWidth = true
+//        self.textColor = UIColor(red: 1.0, green: 1.00, blue: 1.00, alpha: 0.90)
+//        self.layer.shadowOffset = CGSize(width: 2, height: 2)
+//        self.layer.shadowOpacity = 0.8
+//        self.layer.shadowRadius = 2.4
+//        self.layer.shadowColor = CGColor.init(srgbRed: 10, green: 10, blue: 10, alpha: 0.6)
+//        
+//    }
+//}

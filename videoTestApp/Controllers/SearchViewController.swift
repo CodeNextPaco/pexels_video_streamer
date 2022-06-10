@@ -24,13 +24,18 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         tableView.dataSource = self
         //tableView.delegate = self
         tableView.rowHeight = 550
-        self.searchTerm = "Goats"
+        self.searchTerm = "Ocean"
         tableView.rowHeight = tableView.bounds.height
    
         self.fetchData()
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.tabBar.isHidden = false
+     }
     
     
     func fetchData(){
@@ -81,8 +86,6 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
             self.fetchData()
         }
         
-        
-        
      }
     
 
@@ -102,8 +105,8 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
             videoPlayerVC.backgroundImage = cell.videoImage
             videoPlayerVC.videoID = videosArray[indexPath.row].id
             
-            self.hidesBottomBarWhenPushed = true
-            
+           // self.hidesBottomBarWhenPushed = true
+            self.tabBarController?.tabBar.isHidden = true
             
         }
  
