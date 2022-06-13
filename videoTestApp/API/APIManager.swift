@@ -12,7 +12,9 @@ import Foundation
 class APIManager: ObservableObject{
     
     
-    static private let apiKey = "563492ad6f91700001000001547b1c62398e455ca67fd4f0a706f6c4" // paste in Pexels Key(Token)
+    //static private let apiKey = "563492ad6f91700001000001547b1c62398e455ca67fd4f0a706f6c4" // paste in Pexels Key(Token)
+    
+    static private let apiKey = "563492ad6f91700001000001da40add2e45a4cd9a0f6fe3bf82904bb"
     
     @Published private(set) var videos : [Video] = []
     @Published private(set) var video : Video!
@@ -46,7 +48,11 @@ class APIManager: ObservableObject{
            let (data, response) = try await URLSession.shared.data(for: urlRequest)
             
             //check if the response is working with a 200 status code
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Could not fetch data")}
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+                
+                print((response as? HTTPURLResponse)?.statusCode)
+                      
+                fatalError("Could not fetch data")}
             
             let decoder = JSONDecoder()
             

@@ -6,6 +6,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -341,54 +342,53 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JuF-eD-mgt">
-                                <rect key="frame" x="0.0" y="326" width="414" height="487"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="487" id="V8P-gf-Obw"/>
-                                </constraints>
-                                <color key="sectionIndexBackgroundColor" systemColor="systemTealColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="394" id="WRH-ZN-f7m" customClass="VideoSearchCell" customModule="videoTestApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="394"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WRH-ZN-f7m" id="bDe-Bw-c2t">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="394"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g7t-QG-5hJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="787"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vWw-fz-XG9">
+                                    <size key="itemSize" width="185" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="jjp-5q-SIL" customClass="FeedCell" customModule="videoTestApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="185" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Sag-JA-oDT" customClass="FeedCell" customModule="videoTestApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="185" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paperplane.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MY2-8K-vlC">
-                                                    <rect key="frame" x="20" y="0.5" width="374" height="393"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark.folder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Vl7-5Z-JmR">
+                                                    <rect key="frame" x="0.0" y="1" width="185" height="197.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="368" id="uU7-e5-nET"/>
+                                                        <constraint firstAttribute="width" constant="200" id="bZ3-qT-2yQ"/>
+                                                        <constraint firstAttribute="height" constant="200" id="kxc-WA-5EC"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                             <constraints>
-                                                <constraint firstItem="MY2-8K-vlC" firstAttribute="leading" secondItem="bDe-Bw-c2t" secondAttribute="leading" constant="20" symbolic="YES" id="6U2-AZ-Fx8"/>
-                                                <constraint firstItem="MY2-8K-vlC" firstAttribute="top" secondItem="bDe-Bw-c2t" secondAttribute="top" id="LC0-bk-gkz"/>
-                                                <constraint firstAttribute="trailing" secondItem="MY2-8K-vlC" secondAttribute="trailing" constant="20" symbolic="YES" id="Zdl-hn-1F6"/>
-                                                <constraint firstAttribute="bottom" secondItem="MY2-8K-vlC" secondAttribute="bottom" id="hYM-Rt-qlh"/>
+                                                <constraint firstItem="Vl7-5Z-JmR" firstAttribute="top" secondItem="Sag-JA-oDT" secondAttribute="top" id="NRh-W3-QPd"/>
+                                                <constraint firstAttribute="trailing" secondItem="Vl7-5Z-JmR" secondAttribute="trailing" id="P3Q-9R-Elr"/>
+                                                <constraint firstItem="Vl7-5Z-JmR" firstAttribute="leading" secondItem="Sag-JA-oDT" secondAttribute="leading" id="hML-vA-9Ki"/>
+                                                <constraint firstAttribute="bottom" secondItem="Vl7-5Z-JmR" secondAttribute="bottom" id="qok-E5-b94"/>
                                             </constraints>
-                                        </tableViewCellContentView>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="185" height="200"/>
                                         <connections>
-                                            <outlet property="videoImage" destination="MY2-8K-vlC" id="lVS-Um-rze"/>
+                                            <outlet property="videoImageView" destination="Vl7-5Z-JmR" id="yPj-b8-23y"/>
                                         </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LHd-0e-l7V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="JuF-eD-mgt" firstAttribute="bottom" secondItem="LHd-0e-l7V" secondAttribute="bottom" id="HX0-ts-zyh"/>
-                            <constraint firstItem="JuF-eD-mgt" firstAttribute="trailing" secondItem="LHd-0e-l7V" secondAttribute="trailing" id="nXs-6B-Slj"/>
-                            <constraint firstItem="JuF-eD-mgt" firstAttribute="leading" secondItem="LHd-0e-l7V" secondAttribute="leading" id="w2f-QS-U30"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vsx-M7-z0O"/>
                     <connections>
-                        <outlet property="tableView" destination="JuF-eD-mgt" id="Kec-7r-cC8"/>
+                        <outlet property="collectionView" destination="g7t-QG-5hJ" id="vdD-aP-u6l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="smO-Ry-nG2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -513,19 +513,16 @@
         <image name="heart.circle" catalog="system" width="128" height="121"/>
         <image name="message.circle" catalog="system" width="128" height="121"/>
         <image name="paperplane.circle" catalog="system" width="128" height="121"/>
-        <image name="paperplane.circle.fill" catalog="system" width="128" height="121"/>
         <image name="play.circle" catalog="system" width="128" height="121"/>
+        <image name="questionmark.folder" catalog="system" width="128" height="97"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

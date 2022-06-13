@@ -8,12 +8,12 @@
 import UIKit
 import Parse
 
-class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class FeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     
     let manager = APIManager()
-     
-   
-    @IBOutlet weak var tableView: UITableView!
     
     var videos = [PFObject]()
     var videoIDs = [Int]()
@@ -23,9 +23,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
      override func viewDidLoad()   {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-         tableView.delegate  = self
-        
+    
+         collectionView.delegate = self
+         collectionView.dataSource = self
          //self.getLikedVideosFromParse()
 
         
@@ -84,7 +84,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 self.videoFeed.append(likedVideo!)
                 
-                tableView.reloadData()
+                collectionView.reloadData()
                 
             }
             
@@ -112,32 +112,22 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Cell for row... ")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! VideoSearchCell
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.videoFeed.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
-       // let videoURLString = videoImageURLS[indexPath.row].object(forKey: "liked_video_url")
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! FeedCell
         
         let videoURLString = videoFeed[indexPath.row].image
         
-       // guard URL(string: videoURLString ) != nil else { return cell }
-        
         guard let url = URL(string: videoURLString) else { return cell }
         
-        print("URL *****> \(url)")
-        
-       cell.videoImage.loadurl(url: url)
-        
-        
-       
+        cell.videoImageView.loadurl(url: url)
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return self.videoFeed.count
     }
     
 

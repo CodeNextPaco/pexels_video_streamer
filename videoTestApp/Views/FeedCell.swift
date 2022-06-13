@@ -7,10 +7,11 @@
 
 import UIKit
 
-class FeedCell: UITableViewCell {
+class FeedCell: UICollectionViewCell {
+    
+//    @IBOutlet weak var videoImageView: UIImageView!
     
     @IBOutlet weak var videoImageView: UIImageView!
-    
     var videoImgUrl = String()
     
     
