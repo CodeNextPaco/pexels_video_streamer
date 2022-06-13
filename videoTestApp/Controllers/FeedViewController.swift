@@ -33,9 +33,14 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
          collectionView.delegate = self
          collectionView.dataSource = self
          //self.getLikedVideosFromParse()
-
+         
         
         // Do any additional setup after loading the view.
+         
+         
+        
+         
+         
     }
     
     
@@ -68,17 +73,15 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
                 self.fetchData()
             }
-            print(self.videoIDs)
-            
-           
+             
         }
     }
     
     func fetchData()  {
         
-       print("fetchData() called")
         Task{
             
+            self.videoFeed = [] //remove all items
             for video in self.videoIDs {
                 
                 self.likedVideo = await self.manager.getVideoById(id: video)
@@ -86,9 +89,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 
                 self.videoFeed.append(likedVideo!)
                 
-                collectionView.reloadData()
-                
             }
+            
+            collectionView.reloadData()
 
         }
 
@@ -98,15 +101,18 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-       
-        self.videoFeed = [] //remove all items
-        print("ViewDidAppear")
         self.getLikedVideosFromParse()
-        
+       
+    
 
     }
     
     
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool{
+        
+        return true
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.videoFeed.count
@@ -124,6 +130,11 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        print("Selected a cell")
     }
     
 
