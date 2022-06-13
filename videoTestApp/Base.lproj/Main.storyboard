@@ -85,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1839.1304347826087" y="68.973214285714278"/>
+            <point key="canvasLocation" x="1733" y="-725"/>
         </scene>
         <!--Player View Controller-->
         <scene sceneID="hvD-ig-SEP">
@@ -306,13 +306,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfi-3O-Ykc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3021.739130434783" y="68.973214285714278"/>
+            <point key="canvasLocation" x="1733" y="193"/>
         </scene>
-        <!--Item-->
+        <!--Search Videos-->
         <scene sceneID="2Qw-ba-KVl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tKb-4l-poq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="GtI-zC-Uva"/>
+                    <tabBarItem key="tabBarItem" title="Search Videos" id="GtI-zC-Uva"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GTG-pX-JPG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -325,7 +325,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QnQ-hS-BaO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.98550724637687" y="68.973214285714278"/>
+            <point key="canvasLocation" x="691" y="-725"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="GwK-NR-8J7">
@@ -343,28 +343,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g7t-QG-5hJ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="787"/>
+                                <rect key="frame" x="0.0" y="143" width="414" height="644"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vWw-fz-XG9">
-                                    <size key="itemSize" width="185" height="200"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vWw-fz-XG9">
+                                    <size key="itemSize" width="195" height="181"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="jjp-5q-SIL" customClass="FeedCell" customModule="videoTestApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="185" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="195" height="181"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Sag-JA-oDT" customClass="FeedCell" customModule="videoTestApp" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="185" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="195" height="181"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark.folder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Vl7-5Z-JmR">
-                                                    <rect key="frame" x="0.0" y="1" width="185" height="197.5"/>
+                                                    <rect key="frame" x="0.0" y="1" width="195" height="178.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="200" id="bZ3-qT-2yQ"/>
-                                                        <constraint firstAttribute="height" constant="200" id="kxc-WA-5EC"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="bZ3-qT-2yQ"/>
+                                                        <constraint firstAttribute="height" constant="600" id="kxc-WA-5EC"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -375,9 +375,10 @@
                                                 <constraint firstAttribute="bottom" secondItem="Vl7-5Z-JmR" secondAttribute="bottom" id="qok-E5-b94"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="185" height="200"/>
+                                        <size key="customSize" width="195" height="181"/>
                                         <connections>
                                             <outlet property="videoImageView" destination="Vl7-5Z-JmR" id="yPj-b8-23y"/>
+                                            <segue destination="qtp-L3-IH4" kind="show" id="CC7-Ak-4t4"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -489,11 +490,11 @@
             </objects>
             <point key="canvasLocation" x="-1272" y="-803"/>
         </scene>
-        <!--Item 2-->
+        <!--My Videos-->
         <scene sceneID="cfs-UW-YQj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Git-QB-d5N" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="p0L-mD-cAz"/>
+                    <tabBarItem key="tabBarItem" title="My Videos" id="p0L-mD-cAz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nQ4-TD-SPx">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -509,6 +510,9 @@
             <point key="canvasLocation" x="-1430.4347826086957" y="32.8125"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gRG-9J-XKg"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="heart.circle" catalog="system" width="128" height="121"/>
         <image name="message.circle" catalog="system" width="128" height="121"/>
@@ -520,9 +524,6 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

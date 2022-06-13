@@ -35,7 +35,7 @@ class PlayerViewController: UIViewController {
     var backgroundImage = UIImageView()
     var isPlaying = false
     var isShowingComments = false
-    var player = AVPlayer(playerItem: nil)
+    //var player = AVPlayer(playerItem: nil)
     
     
     //video data
@@ -98,7 +98,7 @@ class PlayerViewController: UIViewController {
         playerLayer.videoGravity = .resizeAspectFill
       
       //as as a sublayer
-        view.layer.addSublayer(playerLayer)
+        //view.layer.addSublayer(playerLayer)
         view.layer.insertSublayer(playerLayer, at: 0)
       
       //playStopBtn.setTitle("Stop", for: .normal)

@@ -7,6 +7,7 @@
 
 import UIKit
 import Parse
+import AVKit
 
 class FeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -14,16 +15,21 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     let manager = APIManager()
-    
     var videos = [PFObject]()
     var videoIDs = [Int]()
     var likedVideo = APIManager().video
     var videoFeed = [Video]()
     
+
+//    var playerLooper: AVPlayerLooper!
+//    var queuePlayer: AVQueuePlayer!
+    
+    public var urlString = String() //each cell will need one 
+    
      override func viewDidLoad()   {
         super.viewDidLoad()
         
-    
+         
          collectionView.delegate = self
          collectionView.dataSource = self
          //self.getLikedVideosFromParse()
@@ -32,15 +38,11 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Do any additional setup after loading the view.
     }
     
+    
+    
     func getLikedVideosFromParse(){
-        
-        
+
         let query = PFQuery(className: "LikedVideos")
-        
-        //let user = PFUser.current()
-        
-       // query.whereKey("user", equalTo: user?.objectId! as Any)
-        
         query.includeKey("user")
         
         query.limit = 20
@@ -87,11 +89,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 collectionView.reloadData()
                 
             }
-            
-            //print("Saved videro image urls")
-           // print(self.videoImageURLS)
-            
-          //  tableView.reloadData()
+
         }
 
         
@@ -105,12 +103,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         print("ViewDidAppear")
         self.getLikedVideosFromParse()
         
-        //tableView.reloadData()
-        
-   
-        
-        
+
     }
+    
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -127,18 +122,33 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         cell.videoImageView.loadurl(url: url)
         
+
         return cell
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+     
+     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        print("Prepare for Segue")
+        let cell = sender as! FeedCell
+        if let indexPath = collectionView.indexPath(for: cell){
+            
+            let videoPlayerVC = segue.destination as! PlayerViewController
+            
+            videoPlayerVC.urlString = videoFeed[indexPath.row].videoFiles[1].link
+            videoPlayerVC.videoUser = videoFeed[indexPath.row].user.name
+           // videoPlayerVC.videoCategory = self.searchTerm
+            videoPlayerVC.videoDuration = videoFeed[indexPath.row].duration
+            //videoPlayerVC.backgroundImage = cell.videoImage
+            videoPlayerVC.videoID = videoFeed[indexPath.row].id
+            
+           // self.hidesBottomBarWhenPushed = true
+            self.tabBarController?.tabBar.isHidden = true
+            
+        }
+        
     }
-    */
+     
 
 }
