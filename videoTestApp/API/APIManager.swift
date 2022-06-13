@@ -8,26 +8,28 @@
 
 import Foundation
 
+
 class APIManager: ObservableObject{
     
     
     static private let apiKey = "563492ad6f91700001000001547b1c62398e455ca67fd4f0a706f6c4" // paste in Pexels Key(Token)
     
     @Published private(set) var videos : [Video] = []
+    @Published private(set) var video : Video!
     
     func searchPexelVidsByTerm(term: String) async -> [Video]{
         
         //async function that fetches video data from a term and decodes JSON response
         do {
             
-            print("API Searching for " + term)
+           
             let auth = APIManager.apiKey
             
             //build our url string with a search term
             let baseUrl = "https://api.pexels.com/videos/search?query="
             
             let fetchUrlString = baseUrl + term + "&per_page=10&orientation=portrait"
-            print("with this url -> \(fetchUrlString)")
+            
             
            // make sure we have a url, so use a guard statement, else bail out
             guard let fetchUrl = URL(string: fetchUrlString) else { fatalError("Missing url")}
@@ -52,8 +54,6 @@ class APIManager: ObservableObject{
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             let decoderData = try decoder.decode(ResponseBody.self, from: data)
-            
-            print("Response data ------>")
 
             self.videos = [] //empty it first, in case user has done another search
             self.videos = decoderData.videos
@@ -68,12 +68,48 @@ class APIManager: ObservableObject{
         return self.videos
     }
     
-//    func getVideoById(id: Int) -> [Video]{
-//
-//
-//
-//
-//    }
+    func getVideoById(id: Int)  async -> Video{
+
+        do {
+            
+            let auth = APIManager.apiKey
+            
+            //build our url string with a search term
+            let baseUrl = "https://api.pexels.com/videos/videos/"
+
+            
+            let fetchUrlString = baseUrl + String(id)
+            
+            print(fetchUrlString)
+            
+            // make sure we have a url, so use a guard statement, else bail out
+            guard let fetchUrl = URL(string: fetchUrlString) else { fatalError("Missing url") }
+            var urlRequest = URLRequest(url: fetchUrl)
+            urlRequest.setValue(auth, forHTTPHeaderField: "Authorization")
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+            
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Could not fetch data")}
+       
+            let decoder = JSONDecoder()
+            
+            //set the decoder to handle snake case
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            let decoderData = try decoder.decode(Video.self, from: data)
+            
+             
+            self.video = decoderData
+        
+            
+        } catch {
+            
+            print("Error fetching data from Pexels: \(error)")
+            
+        }
+        
+        return self.video
+
+    }
     
 }
 

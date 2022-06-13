@@ -44,8 +44,6 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
             
             self.videosArray = await self.manager.searchPexelVidsByTerm(term: self.searchTerm)
             tableView.reloadData()
-            
-            print(videosArray)
  
         }
     }
@@ -57,15 +55,12 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "VideoSearchCell",
                                                  for: indexPath) as! VideoSearchCell
         
-        //let video = self.videosArray[indexPath.row]
         
         let videoURLString = videosArray[indexPath.row].image
         
         guard let url = URL(string: videoURLString) else { return cell }
         
         cell.videoImage.loadurl(url: url)
-         
-         
         
         return cell
     }

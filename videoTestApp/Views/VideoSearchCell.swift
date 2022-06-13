@@ -14,9 +14,8 @@ class VideoSearchCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
-        //self.videoImage.image = UIImage(systemName: "play")
+    
         
     }
 
@@ -30,6 +29,7 @@ class VideoSearchCell: UITableViewCell {
 
 extension UIImageView {
     func loadurl(url: URL) {
+
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {

@@ -21,6 +21,8 @@
 		846BB917284583DE00541516 /* VideoSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BB916284583DE00541516 /* VideoSearchCell.swift */; };
 		846BB91F284EB33000541516 /* cloudsvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 846BB91E284EB33000541516 /* cloudsvid.mp4 */; };
 		846BB921284EB61900541516 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BB920284EB61900541516 /* LoginViewController.swift */; };
+		84D69F34285397BA006E94E2 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D69F33285397BA006E94E2 /* FeedCell.swift */; };
+		84D69F3628539EBA006E94E2 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D69F3528539EBA006E94E2 /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		846BB916284583DE00541516 /* VideoSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSearchCell.swift; sourceTree = "<group>"; };
 		846BB91E284EB33000541516 /* cloudsvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = cloudsvid.mp4; path = ../../../../../../Downloads/cloudsvid.mp4; sourceTree = "<group>"; };
 		846BB920284EB61900541516 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		84D69F33285397BA006E94E2 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		84D69F3528539EBA006E94E2 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		99157A7B874BD3B574F30C0D /* Pods-videoTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-videoTestApp.release.xcconfig"; path = "Target Support Files/Pods-videoTestApp/Pods-videoTestApp.release.xcconfig"; sourceTree = "<group>"; };
 		B71342289CE0EBCFFB18C0BD /* Pods_videoTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_videoTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F40818A7EFD3CC8CDF4596 /* Pods-videoTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-videoTestApp.debug.xcconfig"; path = "Target Support Files/Pods-videoTestApp/Pods-videoTestApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,8 +103,10 @@
 		846BB90C284409BA00541516 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				846BB920284EB61900541516 /* LoginViewController.swift */,
 				846BB90D284409EF00541516 /* PlayerViewController.swift */,
 				846BB90F28440AAC00541516 /* SearchViewController.swift */,
+				84D69F3528539EBA006E94E2 /* FeedViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -124,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				846BB916284583DE00541516 /* VideoSearchCell.swift */,
-				846BB920284EB61900541516 /* LoginViewController.swift */,
+				84D69F33285397BA006E94E2 /* FeedCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,12 +271,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				846BB921284EB61900541516 /* LoginViewController.swift in Sources */,
+				84D69F3628539EBA006E94E2 /* FeedViewController.swift in Sources */,
 				846BB91028440AAC00541516 /* SearchViewController.swift in Sources */,
 				846BB917284583DE00541516 /* VideoSearchCell.swift in Sources */,
 				846BB90E284409EF00541516 /* PlayerViewController.swift in Sources */,
 				846BB91328440BDF00541516 /* APIManager.swift in Sources */,
 				840BBA41283F4C40005F885A /* AppDelegate.swift in Sources */,
 				840BBA43283F4C40005F885A /* SceneDelegate.swift in Sources */,
+				84D69F34285397BA006E94E2 /* FeedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
