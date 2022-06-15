@@ -12,9 +12,9 @@ import Foundation
 class APIManager: ObservableObject{
     
     
-    //static private let apiKey = "563492ad6f91700001000001547b1c62398e455ca67fd4f0a706f6c4" // paste in Pexels Key(Token)
     
-    static private let apiKey = "563492ad6f91700001000001da40add2e45a4cd9a0f6fe3bf82904bb"
+    
+    static private let apiKey = "<Replace key: https://www.pexels.com/api/new/>"
     
     @Published private(set) var videos : [Video] = []
     @Published private(set) var video : Video!
