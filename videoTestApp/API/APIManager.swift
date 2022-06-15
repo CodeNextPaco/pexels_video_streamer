@@ -75,14 +75,14 @@ class APIManager: ObservableObject{
     }
     
     func getVideoById(id: Int)  async -> Video{
-
+        //async function returns a Pexels video from a given video ID
+        
         do {
             
             let auth = APIManager.apiKey
             
             //build our url string with a search term
             let baseUrl = "https://api.pexels.com/videos/videos/"
-
             
             let fetchUrlString = baseUrl + String(id)
             
@@ -98,7 +98,7 @@ class APIManager: ObservableObject{
        
             let decoder = JSONDecoder()
             
-            //set the decoder to handle snake case
+            //set the decoder to handle snake_case
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             let decoderData = try decoder.decode(Video.self, from: data)
@@ -119,6 +119,7 @@ class APIManager: ObservableObject{
     
 }
 
+//Data model for the Response and a Video, we will use this to map the JSON data
 struct ResponseBody: Decodable{
     
     var page: Int
@@ -128,6 +129,7 @@ struct ResponseBody: Decodable{
     var videos: [Video]
 }
 
+// a Video that is returned will have basic info and then an array of video in different formats, also User info
 struct Video: Decodable, Identifiable{
     
     var id: Int

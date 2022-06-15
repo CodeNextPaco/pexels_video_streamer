@@ -21,7 +21,7 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         super.viewDidLoad()
         
         tableView.dataSource = self
-        //tableView.delegate = self
+        tableView.delegate = self
         tableView.rowHeight = 550
         self.searchTerm = "Ocean"
         tableView.rowHeight = tableView.bounds.height
@@ -38,11 +38,11 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
     
     
     func fetchData(){
-        
+        //get data from the API manager
         Task{
             
             self.videosArray = await self.manager.searchPexelVidsByTerm(term: self.searchTerm)
-            tableView.reloadData()
+            tableView.reloadData() //reload after data is there
  
         }
     }
@@ -59,7 +59,7 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         
         guard let url = URL(string: videoURLString) else { return cell }
         
-        cell.videoImage.loadurl(url: url)
+        cell.videoImage.loadurl(url: url) //this is set by extending UIImageView (No AlamoFire)
         
         return cell
     }
@@ -76,7 +76,6 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
         if self.searchField.text != ""{
             
             self.searchTerm = self.searchField.text!
-            
             self.fetchData()
         }
         

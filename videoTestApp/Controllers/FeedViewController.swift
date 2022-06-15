@@ -32,15 +32,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
          
          collectionView.delegate = self
          collectionView.dataSource = self
-         //self.getLikedVideosFromParse()
-         
-        
-        // Do any additional setup after loading the view.
-         
-         
-        
-         
-         
     }
     
     
@@ -59,14 +50,12 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             } else if let objects = objects {
                 // The find succeeded.
                 print("Successfully retrieved \(objects.count) rows.")
-                // Do something with the found objects
+                
                 for object in objects {
                    
                     let id = object.object(forKey: "videoID")
                     
-                    print(id!)
-                   // print(object.object(forKey: "videoID") as Any)
-                    
+                    //store the video ID to the videoID array
                     self.videoIDs.append(id as! Int)
                     
                 }
@@ -81,10 +70,11 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         Task{
             
             self.videoFeed = [] //remove all items
+            
+            //loop though videoIDs and get the Video object from Parse via API manager
             for video in self.videoIDs {
                 
                 self.likedVideo = await self.manager.getVideoById(id: video)
-          
                 self.videoFeed.append(likedVideo!)
                 
             }
@@ -96,10 +86,11 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        //load the cells again every time we retured.
         super.viewDidAppear(animated)
         self.getLikedVideosFromParse()
 
+        //could be extended to only reload if a change has ocurred in Parse
     }
     
     
@@ -127,15 +118,13 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return cell
     }
     
+    //TODO: Fix Not responding to user touch
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected an Item")
     }
-    
-    
-    
 
      
-     
+    //TODO: Fix Not currently working, or detecting touch
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("Prepare for Segue")
         let cell = sender as! FeedCell
