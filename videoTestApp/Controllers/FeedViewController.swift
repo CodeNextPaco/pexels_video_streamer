@@ -68,7 +68,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
                    // print(object.object(forKey: "videoID") as Any)
                     
                     self.videoIDs.append(id as! Int)
-
                     
                 }
                 self.fetchData()
@@ -86,7 +85,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 
                 self.likedVideo = await self.manager.getVideoById(id: video)
           
-                
                 self.videoFeed.append(likedVideo!)
                 
             }
@@ -94,7 +92,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             collectionView.reloadData()
 
         }
-
         
     }
     
@@ -102,8 +99,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         super.viewDidAppear(animated)
         self.getLikedVideosFromParse()
-       
-    
 
     }
     
@@ -120,9 +115,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! FeedCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCell", for: indexPath) as! FeedCell
         
-        let videoURLString = videoFeed[indexPath.row].image
+        let videoURLString = videoFeed[indexPath.item].image
         
         guard let url = URL(string: videoURLString) else { return cell }
         
@@ -133,9 +128,10 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        print("Selected a cell")
+        print("Selected an Item")
     }
+    
+    
     
 
      
@@ -163,3 +159,5 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
      
 
 }
+
+ 

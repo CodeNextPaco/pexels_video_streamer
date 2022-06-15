@@ -43,7 +43,6 @@ class SearchViewController: UIViewController , UITableViewDataSource, UITableVie
             
             self.videosArray = await self.manager.searchPexelVidsByTerm(term: self.searchTerm)
             tableView.reloadData()
-    
  
         }
     }
